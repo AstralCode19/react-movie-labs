@@ -12,12 +12,14 @@ import StarRateIcon from "@mui/icons-material/StarRate";
 import IconButton from "@mui/material/IconButton";
 import Grid from "@mui/material/Grid2";
 import img from '../../images/film-poster-placeholder.png'
+import { Link } from "react-router";
 
 export default function MovieCard(props) {
   const movie = props.movie;
   return (
     <Card>
       <CardHeader title={movie.title} sx={{ textWrap: "nowrap"}}/>
+
       <CardMedia
         sx={{ height: 500 }}
         image={
@@ -26,6 +28,7 @@ export default function MovieCard(props) {
             : img
         }
       />
+
       <CardContent>
         <Grid container>
           <Grid size={{xs: 6}}>
@@ -34,6 +37,7 @@ export default function MovieCard(props) {
               {movie.release_date}
             </Typography>
           </Grid>
+
           <Grid size={{xs: 6}}>
             <Typography variant="h6" component="p">
               <StarRateIcon fontSize="small" />
@@ -42,13 +46,17 @@ export default function MovieCard(props) {
           </Grid>
         </Grid>
       </CardContent>
+
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites" onClick={null}>
           <FavoriteIcon color="primary" fontSize="large" />
         </IconButton>
-        <Button variant="outlined" size="medium" color="primary">
-          More Info ...
-        </Button>
+
+        <Link to={`/movies/${movie.id}`}>
+          <Button variant="outlined" size="medium" color="primary">
+            More Info ...
+          </Button>
+        </Link>
       </CardActions>
     </Card>
   );
