@@ -39,4 +39,4 @@ export const getMovies = () => {
         // console.log(json.results);
         return json.results;
       });
-  };  
+  };   
